@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-image: url(img.jpg);
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex-grow: 1;
+    display: flex;  
+    justify-content: center;
+    align-items:center;
+}
+
+#container{
+    height: 500px;
+    width: 500px;
+
+    border-radius: 5%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+#login_form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#login_text{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 50px;
+    
+    color: white;
+}
+
+#options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#helper_options{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#username_box{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;  /* -> changes color of text user types in into the input box */
+
+    width: 300px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    outline: none;
+    
+    padding: 0px 20px 0px 20px;
+}
+#username_box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#password_box{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;  /* -> changes color of text user types in into the input box */
+
+    width: 300px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    outline: none;
+    
+    padding: 0px 20px 0px 20px;
+}
+#password_box::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#remember_me_text{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#forgot_pswd_link{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#login_btn{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+
+    width: 300px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    outline: none;
+    
+    padding: 0px 20px 0px 20px;
+}
+
+#register_btn{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#no_acnt_txt{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#register_link{
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.7);
+}
