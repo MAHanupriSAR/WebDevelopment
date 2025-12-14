@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuraag Tandon | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-cream: #FFFDF5; /* Warm background from Image 2 */
+            --text-dark: #1e1e24;
+            --text-gray: #555;
+            
+            /* Pastels from Image 1 */
+            --accent-yellow: #FDE047; /* Sticky Note Yellow */
+            --accent-blue: #A5F3FC;   /* Sticky Note Blue */
+            --accent-pink: #F9A8D4;   /* Sticky Note Pink */
+            --accent-green: #86EFAC;  /* Sticky Note Green */
+            
+            --border: 2px solid #1e1e24;
+            --shadow: 4px 4px 0px #1e1e24; /* Hard shadow for "pop" effect */
+            
+            --font-main: 'Outfit', sans-serif;
+            --font-hand: 'Patrick Hand', cursive;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-main);
+            /* Subtle dot pattern like graph paper */
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 24px 24px;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .handwritten {
+            font-family: var(--font-hand);
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            position: relative;
+        }
+        
+        /* Little drawn arrow effect */
+        .arrow-draw::after {
+            content: '⤵';
+            position: absolute;
+            right: -30px;
+            top: 10px;
+            transform: rotate(-20deg);
+            font-size: 2rem;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }   
+        
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        
+        .nav-links { display: flex; gap: 2rem; font-weight: 500; }
+        .nav-links a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--accent-yellow); }
+
+        /* --- HERO SECTION (Layout from Image 2, Vibe from Image 1) --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            min-height: 80vh;
+            gap: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Marker underline effect */
+        .highlight::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: var(--accent-yellow);
+            z-index: -1;
+            transform: rotate(-1deg);
+            opacity: 0.7;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-yellow);
+            padding: 1rem 2.5rem;
+            font-weight: 800;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Abstract shape behind image */
+        .blob-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-blue);
+            border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
+            z-index: -1;
+            border: var(--border);
+        }
+
+        .hero-img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%; /* Circle like Image 2 */
+            border: var(--border);
+            background-color: #eee;
+            /* Placeholder for profile image */
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 800;
+            font-size: 5rem;
+            color: #ccc;
+        }
+
+        /* --- STICKY NOTES SECTION (From Image 1) --- */
+        .skills-section { padding: 4rem 0; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .notes-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sticky-note {
+            width: 250px;
+            height: 250px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 5px 10px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .sticky-note h3 { font-family: var(--font-hand); font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .sticky-note ul { list-style: none; font-size: 0.95rem; }
+        .sticky-note li::before { content: '- '; }
+
+        .sn-yellow { background-color: var(--accent-yellow); transform: rotate(-2deg); }
+        .sn-blue { background-color: var(--accent-blue); transform: rotate(1deg); margin-top: 2rem; }
+        .sn-pink { background-color: var(--accent-pink); transform: rotate(-1.5deg); }
+
+        .sticky-note:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+
+        /* --- PROJECTS SECTION (Grid + Card Style) --- */
+        .projects-section { padding: 6rem 0; }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border: var(--border);
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        /* "Tape" effect */
+        .tape {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #ddd;
+            opacity: 0.8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .p-tag {
+            display: inline-block;
+            background: var(--accent-green);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            border: 1px solid #1e1e24;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .p-title { font-size: 1.5rem; margin-bottom: 0.5rem; margin-top: 1rem; }
+        .p-desc { font-size: 0.95rem; color: var(--text-gray); }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 6rem;
+            border-top: var(--border);
+            padding: 4rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .footer-note {
+            font-family: var(--font-hand);
+            font-size: 1.2rem;
+            transform: rotate(-5deg);
+            background: var(--accent-yellow);
+            padding: 0.5rem;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        /* --- EDUCATION SECTION (Index Card Style) --- */
+.edu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.index-card {
+    background-color: #fff;
+    border: var(--border);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    /* Optional: Slight rotation for the first and last card for realism */
+    transition: transform 0.2s ease;
+}
+
+.index-card:hover {
+    transform: translateY(-3px);
+}
+
+/* The red line on top of an index card */
+.card-line {
+    border-bottom: 2px solid #ff8fa3; 
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.school-name {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.edu-year {
+    font-family: var(--font-hand);
+    font-size: 1.3rem;
+    color: var(--text-gray);
+    background: var(--accent-yellow); /* Highlighter effect */
+    padding: 0 0.5rem;
+    transform: rotate(-2deg);
+    display: inline-block;
+}
+
+.degree-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.grade-badge {
+    display: inline-block;
+    background: #f0f0f0;
+    border: 1px solid #1e1e24;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    font-family: var(--font-mono); /* Make sure to stick to a technical font if available, or sans */
+    margin-top: 0.5rem;
+}
+
+/* Specific styling for the timeline connector */
+.timeline-pin {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: #1e1e24;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-image-wrapper { margin-top: 3rem; order: -1; } /* Image on top mobile */
+            .highlight::before { left: 50%; transform: translateX(-50%) rotate(-1deg); width: 200px; }
+            .arrow-draw::after { display: none; } /* Hide arrow on mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">anuraag.</div>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="mailto:anuraag23110@iiitd.ac.in">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-text">
+                <p class="handwritten arrow-draw">Hello! I'm Anuraag,</p>
+                <h1>I build <span class="highlight">creative</span><br> digital products.</h1>
+                <p>CS & Biosciences Undergraduate at IIIT Delhi. Passionate about Game Dev, Low Level Internals, and clean Algorithms.</p>
+                
+                <a href="#" class="btn">View My Resume</a>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <div class="blob-bg"></div>
+                <div class="hero-img">AT</div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="about">
+            <div class="section-header">
+                <span class="handwritten" style="background: white; padding: 0.2rem 1rem; border:1px solid #ccc;">My Expertise</span>
+            </div>
+
+            <div class="notes-grid">
+                <div class="sticky-note sn-yellow">
+                    <h3>Game Dev 🎮</h3>
+                    <ul>
+                        <li>LibGDX & Box2D</li>
+                        <li>Unreal Engine</li>
+                        <li>Physics Mechanics</li>
+                        <li>Tile-based Editors</li>
+                    </ul>
+                </div>
+
+                <div class="sticky-note sn-blue">
+                    <h3>Systems 💻</h3>
+                    <ul>
+                        <li>C / C++</li>
+                        <li>RISC-V Assembly</li>
+                        <li>Memory Management</li>
+                        <li>ISA Emulation</li>
+                    </ul>
+                </div>
+
+                <div class="sticky-note sn-pink">
+                    <h3>Full Stack 🌐</h3>
+                    <ul>
+                        <li>React.js / Node.js</li>
+                        <li>HTML / CSS</li>
+                        <li>SQL & MySQL</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="education-section" style="padding: 4rem 0;">
+    <div class="container">
+        
+        <div class="section-header">
+            <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Education Journey</h2>
+            <p class="handwritten" style="color: var(--text-gray);">My academic background...</p>
+        </div>
+
+        <div class="edu-grid">
+
+            <div class="index-card">
+                <div class="timeline-pin"></div>
+                
+                <div class="card-line">
+                    <span class="school-name">IIIT Delhi</span>
+                    <span class="edu-year">2023 - Present</span>
+                </div>
+                <div class="degree-info">
+                    B.Tech in Computer Science and Biosciences
+                </div>
+                <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">
+                    Specializing in computational biology and core computer science principles.
+                </p>
+                <div class="grade-badge">
+                    CGPA: 7.33
+                </div>
+            </div>
+
+            <div class="index-card" style="transform: rotate(1deg);">
+                <div class="timeline-pin"></div>
+                <div class="card-line">
+                    <span class="school-name">Vishal Bharti Public School</span>
+                    <span class="edu-year">2021 - 2022</span>
+                </div>
+                <div class="degree-info">
+                    Senior Secondary Education (Class XII), CBSE
+                </div>
+                <div class="grade-badge">
+                    Percentage: 89.2%
+                </div>
+            </div>
+
+            <div class="index-card" style="transform: rotate(-1deg);">
+                <div class="timeline-pin"></div>
+                <div class="card-line">
+                    <span class="school-name">Vishal Bharti Public School</span>
+                    <span class="edu-year">2019 - 2020</span>
+                </div>
+                <div class="degree-info">
+                    Secondary Education (Class X), CBSE
+                </div>
+                <div class="grade-badge">
+                    Percentage: 89.2%
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <section class="projects-section" id="work">
+            <div class="section-header" style="text-align: left;">
+                <h2 style="font-size: 2.5rem;">Featured Projects</h2>
+                <p class="handwritten">Stuff I've built recently...</p>
+            </div>
+
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="tape"></div>
+                    <div style="height: 150px; background: #eee; border: 1px dashed #ccc; display:flex; align-items:center; justify-content:center;">
+                        <span>Angry Birds Clone</span>
+                    </div>
+                    <h3 class="p-title">Physics Engine Game</h3>
+                    <p class="p-desc">A 2D game with slingshot mechanics, realistic collisions, and object interactions.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="p-tag">Java</span>
+                        <span class="p-tag">LibGDX</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="tape"></div>
+                    <div style="height: 150px; background: #eee; border: 1px dashed #ccc; display:flex; align-items:center; justify-content:center;">
+                        <span>RISC-V Simulator</span>
+                    </div>
+                    <h3 class="p-title">Assembler & Sim</h3>
+                    <p class="p-desc">Built an assembler for RV32I supporting all major instruction formats and memory tracking.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="p-tag">Python</span>
+                        <span class="p-tag">System</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="tape"></div>
+                    <div style="height: 150px; background: #eee; border: 1px dashed #ccc; display:flex; align-items:center; justify-content:center;">
+                        <span>Now OnCampus</span>
+                    </div>
+                    <h3 class="p-title">Event Manager</h3>
+                    <p class="p-desc">Full-stack web app for managing college events with admin and student roles.</p>
+                    <div style="margin-top: 1rem;">
+                        <span class="p-tag">Node.js</span>
+                        <span class="p-tag">SQL</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="container footer-content">
+                <div>
+                    <h2 style="font-size: 2rem;">Let's work together.</h2>
+                    <br>
+                    <a href="mailto:anuraag23110@iiitd.ac.in" style="font-size: 1.2rem; border-bottom: 2px solid var(--accent-yellow);">anuraag23110@iiitd.ac.in</a>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="#"><b>LinkedIn</b></a>
+                        <a href="#"><b>GitHub</b></a>
+                    </div>
+                </div>
+                <div class="footer-note">
+                    Thanks for visiting! :)
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>

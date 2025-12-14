@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuraag Tandon | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-cream: #FFFDF5;
+            --text-dark: #1e1e24;
+            --text-gray: #555;
+            
+            --accent-yellow: #FDE047;
+            --accent-blue: #A5F3FC;
+            --accent-pink: #F9A8D4;
+            --accent-green: #86EFAC;
+            
+            --border: 2px solid #1e1e24;
+            --shadow: 4px 4px 0px #1e1e24;
+            
+            --font-main: 'Outfit', sans-serif;
+            --font-hand: 'Patrick Hand', cursive;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-main);
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 24px 24px;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .handwritten {
+            font-family: var(--font-hand);
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }   
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 2rem; font-weight: 500; }
+        .nav-links a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--accent-yellow); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            min-height: 70vh;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .hero-text h1 { font-size: 4.5rem; line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; }
+        .highlight { position: relative; z-index: 1; }
+        .highlight::before {
+            content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 15px;
+            background: var(--accent-yellow); z-index: -1; transform: rotate(-1deg); opacity: 0.7;
+        }
+        .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 2rem; max-width: 90%; }
+        .btn {
+            display: inline-block; background: var(--accent-yellow); padding: 1rem 2.5rem;
+            font-weight: 800; border: var(--border); box-shadow: var(--shadow);
+            transition: all 0.2s ease; cursor: pointer;
+        }
+        .btn:active { transform: translate(4px, 4px); box-shadow: none; }
+        .hero-image-wrapper { position: relative; display: flex; justify-content: center; }
+        .blob-bg {
+            position: absolute; width: 400px; height: 400px; background: var(--accent-blue);
+            border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; z-index: -1; border: var(--border);
+        }
+        .hero-img {
+            width: 350px; height: 350px; object-fit: cover; border-radius: 50%;
+            border: var(--border); background-color: #eee; display: flex; 
+            align-items: center; justify-content: center; font-weight: 800; font-size: 5rem; color: #ccc;
+        }
+
+        /* --- THE SIDE LAYOUT SYSTEM --- */
+        .side-layout-section {
+            display: grid;
+            grid-template-columns: 250px 1fr; /* Left Sidebar | Content */
+            gap: 3rem;
+            margin-bottom: 8rem; /* Big spacing between sections */
+            align-items: start;
+        }
+
+        /* The Left Sidebar Content */
+        .side-header {
+            position: relative;
+            padding-right: 1rem;
+        }
+
+        .side-title {
+            display: inline-block;
+            background-color: var(--accent-pink);
+            font-size: 1.5rem;
+            font-weight: 800;
+            padding: 0.2rem 0.8rem;
+            transform: rotate(-1deg);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* The drawn arrow SVG */
+        .drawn-arrow {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            width: 50px;
+            height: 50px;
+            transform: rotate(10deg);
+        }
+
+        /* --- SPECIFIC COMPONENT STYLES --- */
+
+        /* Sticky Notes (About) */
+        .notes-grid { display: flex; justify-content: flex-start; gap: 2rem; flex-wrap: wrap; }
+        .sticky-note {
+            width: 220px; height: 220px; padding: 1.5rem; display: flex; flex-direction: column;
+            justify-content: space-between; border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 5px 10px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: default; background: white;
+        }
+        .sticky-note h3 { font-family: var(--font-hand); font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .sticky-note ul { list-style: none; font-size: 0.9rem; }
+        .sticky-note li::before { content: '- '; }
+        .sn-yellow { background-color: var(--accent-yellow); transform: rotate(-2deg); }
+        .sn-blue { background-color: var(--accent-blue); transform: rotate(1deg); margin-top: 1rem; }
+        .sn-pink { background-color: var(--accent-pink); transform: rotate(-1.5deg); }
+        .sticky-note:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+
+        /* Education Cards */
+        .edu-grid { display: flex; flex-direction: column; gap: 2rem; max-width: 100%; }
+        .index-card {
+            background-color: #fff; border: var(--border); padding: 1.5rem;
+            box-shadow: var(--shadow); position: relative; transition: transform 0.2s ease;
+        }
+        .index-card:hover { transform: translateY(-3px); }
+        .card-line { border-bottom: 2px solid #ff8fa3; margin-bottom: 1rem; padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .school-name { font-weight: 800; font-size: 1.2rem; }
+        .edu-year { font-family: var(--font-hand); font-size: 1.1rem; background: var(--accent-yellow); padding: 0 0.5rem; transform: rotate(-2deg); }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .project-card { background: white; border: var(--border); padding: 1.5rem; position: relative; transition: transform 0.2s ease; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .tape { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 25px; background: rgba(255, 255, 255, 0.6); border: 1px solid #ddd; opacity: 0.8; }
+        .p-tag { display: inline-block; background: var(--accent-green); padding: 0.1rem 0.5rem; font-size: 0.75rem; border: 1px solid #1e1e24; border-radius: 4px; margin-top: 0.8rem; font-weight: 600; }
+        .p-title { font-size: 1.3rem; margin-bottom: 0.5rem; margin-top: 1rem; }
+
+        /* Work Experience (The Frame) */
+        .work-frame {
+            position: relative;
+            padding: 2rem 1rem;
+            min-height: 300px;
+        }
+        /* Crop Marks */
+        .crop-line { position: absolute; background-color: #1e1e24; }
+        .cl-top { top: 0; left: 0; right: 0; height: 2px; }
+        .cl-bottom { bottom: 0; left: 0; right: 0; height: 2px; }
+        .cl-left { left: 0; top: 0; bottom: 0; width: 2px; }
+        .cl-right { right: 0; top: 0; bottom: 0; width: 2px; }
+        /* Extended marks */
+        .cl-top::before { content:''; position: absolute; left:-20px; right:-20px; top:0; height:2px; background:#1e1e24; z-index: -1; }
+        .cl-bottom::before { content:''; position: absolute; left:-20px; right:-20px; bottom:0; height:2px; background:#1e1e24; z-index: -1; }
+        .cl-left::before { content:''; position: absolute; top:-20px; bottom:-20px; left:0; width:2px; background:#1e1e24; z-index: -1; }
+        .cl-right::before { content:''; position: absolute; top:-20px; bottom:-20px; right:0; width:2px; background:#1e1e24; z-index: -1; }
+
+        .work-list { display: flex; flex-direction: column; gap: 2rem; padding: 1rem; }
+        .work-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+        .work-number {
+            flex-shrink: 0; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-hand); font-size: 1.5rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+        .wn-1 { background-color: var(--accent-yellow); }
+        .wn-2 { background-color: var(--accent-blue); }
+        .wn-3 { background-color: var(--accent-pink); }
+        .work-details h4 { font-size: 1.2rem; font-weight: 800; }
+        .work-meta { font-size: 0.85rem; color: var(--text-gray); display: block; margin-bottom: 0.2rem;}
+
+        /* Contact Form */
+        .form-area { display: flex; flex-direction: column; gap: 2rem; max-width: 600px; }
+        .form-group { display: flex; align-items: baseline; width: 100%; }
+        .form-label { font-family: var(--font-hand); font-size: 1.4rem; padding: 0.2rem 0.5rem; margin-right: 1rem; white-space: nowrap; }
+        .lbl-pink { background-color: var(--accent-pink); }
+        .lbl-yellow { background-color: var(--accent-yellow); }
+        .lbl-blue { background-color: var(--accent-blue); }
+        .form-input { flex-grow: 1; border: none; border-bottom: 2px solid #1e1e24; background: transparent; font-family: var(--font-hand); font-size: 1.3rem; padding: 0.5rem; color: var(--text-dark); }
+        .form-input:focus { outline: none; border-bottom-width: 3px; }
+        .send-btn { align-self: flex-end; background-color: #1e1e24; color: white; font-family: var(--font-main); font-weight: 500; padding: 1rem 3rem; font-size: 1.1rem; margin-top: 1rem; cursor: pointer; border: none; transition: transform 0.2s; }
+        .send-btn:hover { transform: scale(1.05); }
+
+        /* --- FOOTER (Transferred from Portfolio 1) --- */
+        footer {
+            margin-top: 6rem;
+            border-top: var(--border);
+            padding: 4rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .footer-note {
+            font-family: var(--font-hand);
+            font-size: 1.2rem;
+            transform: rotate(-5deg);
+            background: var(--accent-yellow);
+            padding: 0.5rem;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .side-layout-section { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 4rem; }
+            .side-header { text-align: left; margin-bottom: 1rem; padding-right: 0; }
+            .drawn-arrow { transform: rotate(90deg) scaleY(-1); top: auto; bottom: -40px; left: 20px; right: auto; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .form-group { flex-direction: column; align-items: flex-start; }
+            .form-input { width: 100%; margin-top: 0.5rem; }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-image-wrapper { order: -1; margin-bottom: 2rem; }
+            
+            /* Footer responsive */
+            .footer-content { flex-direction: column; gap: 2rem; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">anuraag.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-text">
+                <p class="handwritten" style="position:relative;">
+                    Hello! I'm Anuraag,
+                    <svg style="position:absolute; right:-40px; top:10px; width:30px;" viewBox="0 0 55 49" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 5 C 20 20, 40 10, 50 40"/>
+                        <path d="M50 40 L 40 35 M50 40 L 52 30"/>
+                    </svg>
+                </p>
+                <h1>I build <span class="highlight">creative</span><br> digital products.</h1>
+                <p>CS & Biosciences Undergraduate at IIIT Delhi. Passionate about Game Dev and Systems.</p>
+                <a href="#experience" class="btn">View My Resume</a>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <div class="blob-bg"></div>
+                <div class="hero-img">AT</div>
+            </div>
+        </section>
+
+        <section class="side-layout-section" id="about">
+            <div class="side-header">
+                <h2 class="side-title">About Me</h2>
+                <p class="handwritten">My main <br>expertise areas</p>
+                <svg class="drawn-arrow" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10,20 Q40,60 80,40" />
+                    <path d="M80,40 L65,35 M80,40 L70,55" />
+                </svg>
+            </div>
+            
+            <div class="notes-grid">
+                <div class="sticky-note sn-yellow">
+                    <h3>Game Dev 🎮</h3>
+                    <ul>
+                        <li>LibGDX & Box2D</li>
+                        <li>Unreal Engine</li>
+                        <li>Physics Mechanics</li>
+                    </ul>
+                </div>
+                <div class="sticky-note sn-blue">
+                    <h3>Systems 💻</h3>
+                    <ul>
+                        <li>C / C++</li>
+                        <li>RISC-V Assembly</li>
+                        <li>Memory Management</li>
+                    </ul>
+                </div>
+                <div class="sticky-note sn-pink">
+                    <h3>Full Stack 🌐</h3>
+                    <ul>
+                        <li>React.js / Node.js</li>
+                        <li>SQL & MySQL</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="side-layout-section">
+            <div class="side-header">
+                <h2 class="side-title">Education</h2>
+                <p class="handwritten">My academic <br>background</p>
+                <svg class="drawn-arrow" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10,20 Q40,60 80,40" />
+                    <path d="M80,40 L65,35 M80,40 L70,55" />
+                </svg>
+            </div>
+
+            <div class="edu-grid">
+                <div class="index-card">
+                    <div class="card-line">
+                        <span class="school-name">IIIT Delhi</span>
+                        <span class="edu-year">2023 - Present</span>
+                    </div>
+                    <div class="degree-info">B.Tech in Computer Science and Biosciences</div>
+                    <div style="font-size: 0.9rem; margin-top:0.5rem;">CGPA: 7.33</div>
+                </div>
+
+                <div class="index-card" style="transform: rotate(1deg);">
+                    <div class="card-line">
+                        <span class="school-name">Vishal Bharti Public School</span>
+                        <span class="edu-year">2021 - 2022</span>
+                    </div>
+                    <div class="degree-info">Senior Secondary (Class XII)</div>
+                    <div style="font-size: 0.9rem; margin-top:0.5rem;">Percentage: 89.2%</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="side-layout-section" id="work">
+            <div class="side-header">
+                <h2 class="side-title">Projects</h2>
+                <p class="handwritten">Stuff I've built <br>recently</p>
+                <svg class="drawn-arrow" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10,20 Q40,60 80,40" />
+                    <path d="M80,40 L65,35 M80,40 L70,55" />
+                </svg>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="tape"></div>
+                    <div style="height: 120px; background: #eee; border: 1px dashed #ccc; display:flex; align-items:center; justify-content:center; color:#999; font-weight:bold;">
+                        Java Game
+                    </div>
+                    <h3 class="p-title">Angry Birds Clone</h3>
+                    <p class="p-desc">A 2D game with slingshot mechanics and collisions.</p>
+                    <div style="margin-top: 0.5rem;">
+                        <span class="p-tag">Java</span>
+                        <span class="p-tag">LibGDX</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="tape"></div>
+                    <div style="height: 120px; background: #eee; border: 1px dashed #ccc; display:flex; align-items:center; justify-content:center; color:#999; font-weight:bold;">
+                        Python App
+                    </div>
+                    <h3 class="p-title">RISC-V Simulator</h3>
+                    <p class="p-desc">Assembler for RV32I with memory tracking.</p>
+                    <div style="margin-top: 0.5rem;">
+                        <span class="p-tag">Python</span>
+                        <span class="p-tag">System</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="side-layout-section" id="experience">
+            <div class="side-header">
+                <h2 class="side-title">Work Experience</h2>
+                <p class="handwritten">Have been coding <br>for past 4 years</p>
+                <svg class="drawn-arrow" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10,20 Q40,60 80,40" />
+                    <path d="M80,40 L65,35 M80,40 L70,55" />
+                </svg>
+            </div>
+
+            <div class="work-frame">
+                <div class="crop-line cl-top"></div>
+                <div class="crop-line cl-bottom"></div>
+                <div class="crop-line cl-left"></div>
+                <div class="crop-line cl-right"></div>
+
+                <div class="work-list">
+                    <div class="work-item">
+                        <div class="work-number wn-1">1</div>
+                        <div class="work-details">
+                            <h4>Core Team Member at FooBar</h4>
+                            <span class="work-meta">IIIT Delhi Coding Club | Jan 2024 - Present</span>
+                            <p style="font-size: 0.95rem;">Organizing competitive programming contests and mentoring juniors.</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item">
+                        <div class="work-number wn-2">2</div>
+                        <div class="work-details">
+                            <h4>Undergraduate Researcher</h4>
+                            <span class="work-meta">Infosys Centre for AI | Aug 2023 - Dec 2023</span>
+                            <p style="font-size: 0.95rem;">Worked on computational biology models to simulate protein folding.</p>
+                        </div>
+                    </div>
+
+                    <div class="work-item">
+                        <div class="work-number wn-3">3</div>
+                        <div class="work-details">
+                            <h4>Game Dev Intern</h4>
+                            <span class="work-meta">Indie Studio | May 2023 - July 2023</span>
+                            <p style="font-size: 0.95rem;">Assisted in level design and implemented rigid body physics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="side-layout-section" id="contact">
+            <div class="side-header">
+                <h2 class="side-title">Contact here</h2>
+                <p class="handwritten">Have a project idea? <br>just say Hi.</p>
+                <svg class="drawn-arrow" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10,20 Q40,60 80,40" />
+                    <path d="M80,40 L65,35 M80,40 L70,55" />
+                </svg>
+            </div>
+
+            <div class="form-area">
+                <div class="form-group">
+                    <label class="form-label lbl-pink">Name</label>
+                    <input type="text" class="form-input" placeholder="Zainab Nisa">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label lbl-yellow">Your email</label>
+                    <input type="email" class="form-input" placeholder="zainab123@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label lbl-blue">About Project</label>
+                    <input type="text" class="form-input" placeholder="I want to discuss you about...">
+                </div>
+
+                <button class="send-btn">Send Here</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container footer-content">
+                <div>
+                    <h2 style="font-size: 2rem;">Let's work together.</h2>
+                    <br>
+                    <a href="mailto:anuraag23110@iiitd.ac.in" style="font-size: 1.2rem; border-bottom: 2px solid var(--accent-yellow);">anuraag23110@iiitd.ac.in</a>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="#"><b>LinkedIn</b></a>
+                        <a href="#"><b>GitHub</b></a>
+                    </div>
+                </div>
+                <div class="footer-note">
+                    Thanks for visiting! :)
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
