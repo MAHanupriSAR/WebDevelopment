@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    font-size: 50px;
+}
+
+body{
+    background-color: black;
+}
+
+#container{
+    display: grid;
+    /* grid-template-rows: 200px 200px; */
+    grid-template-rows: 1fr 1fr;
+    /* grid-template-columns: 200px 200px; */
+    grid-template-columns: 1fr 1fr;
+    background-color: pink;
+    gap: 10px;
+    height: 400px;
+    width: 400px;
+}
+
+#child1{
+    background-color: red;
+}
+
+#child2{
+    background-color: green;
+}
+
+#child3{
+    background-color: yellow;
+}
+
+#child4{
+    background-color: blue ;
+}

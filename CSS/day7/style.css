@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    width: 1000px;
+    height: 200px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#text{
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    left: 100%;
+    animation-name: moving_text;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function:linear;
+    white-space: nowrap;
+    animation-iteration-count: infinite;
+}
+
+@keyframes moving_text {
+    from{
+        left: 100%;
+        transform: translateX(0%);
+
+    }
+    to{
+        left: 0%;
+        transform: translateX(-100%);
+    }   
+} 
