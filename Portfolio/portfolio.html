@@ -16,6 +16,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,842;1,842&family=Outfit:wght@100..900&family=Patrick+Hand&display=swap" rel="stylesheet">
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+
 
 </head>
 <body>
@@ -40,7 +46,6 @@
             <div id="blob">
                 <div id="blob_bg">
                     <div id="blob_img"></div>
-                    <!-- <img src="profilePic.jpg" alt="Anuraag Tandon" id="blob-img"> -->
                 </div>
             </div>
         </section>
@@ -230,22 +235,41 @@
                 <form id="contact_me_form">
                     <div id="name_input">
                         <label class="label" id="name_label" for="name_field">Name</label>
-                        <input type="text" id="name_field" name="username" placeholder="Your Name">
+                        <input type="text" id="name_field" name="username" placeholder="Your Name" required>
                     </div>
                     <div id="email_input">
                         <label class="label" id="email_label" for="email_field">Email</label>
-                        <input type="text" id="email_field" name="email" placeholder="Your Email ID">
+                        <input type="email" id="email_field" name="email" placeholder="Your Email ID" required>
                     </div>
                     <div id="message_input">
                         <label class="label" id="message_label" for="message_field">Message</label>
-                        <input type="text" id="message_field" name="message" placeholder="Your Message for Me">
+                        <input type="text" id="message_field" name="message" placeholder="Your Message for Me" required>
                     </div>
                     <button type="submit" id="send_btn">Send</button>
                 </form>
             </div>   
         </section>
 
-
+        <footer>
+            <div id="black_footer_line"></div>
+            <div id="footer_txt">
+                <div id="left_footer_txt">
+                    <div id="footer_greet1">Let's Work Together</div>
+                    <div id="links">
+                        <div id="footer_email">anuraag23110@iiitd.ac.in</div>
+                        <div id="footer_social_links">
+                            <div class="social_link" id="github">
+                                <i class="fa-brands fa-github" style="color: #000000;"></i>
+                            </div>
+                            <div class="social_link" id="linkdin">
+                                <i class="fa-brands fa-linkedin" style="color: #000000;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer_greet2">Thanks For Visiting! :)</div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
