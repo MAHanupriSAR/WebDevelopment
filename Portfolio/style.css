@@ -136,13 +136,25 @@ nav{
     transform: translate(4px, 4px); 
     box-shadow: none; 
 }
-#blob_bg{
+#blob{
+    position: relative;
     width: 400px;
     height: 400px;
+}
+@keyframes spinBlob {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+#blob_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: var(--accent-blue);
     border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
     z-index: -1;
     border: var(--border);
+
+    animation: spinBlob 10s linear infinite;
 }
 #blob_img{
     width: 350px;
