@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    padding: 40px;
+    border-radius: 20px;
+
+    transition: all 0.1s ease;
+}
+#btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+#btn:active{
+    transform: scale(1);
+}

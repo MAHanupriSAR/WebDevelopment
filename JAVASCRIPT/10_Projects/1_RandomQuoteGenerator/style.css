@@ -1,0 +1,55 @@
+*{
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    width: 800px;
+    height: 400px;
+    padding: 40px;
+    background-color: brown;
+    border-radius: 12px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+#quote_txt{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+
+#btn{
+    background-color:rgb(144, 89, 232);
+    padding: 16px;
+    border-radius: 16px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+
+    box-shadow: 4px 4px 0px 0px black;
+
+    transition: all 0.1s ease;
+}
+#btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+#btn:active{
+    transform: translate(4px,4px);
+    box-shadow: none;
+}
