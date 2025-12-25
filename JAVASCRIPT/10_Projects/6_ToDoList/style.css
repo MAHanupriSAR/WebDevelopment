@@ -1,0 +1,140 @@
+*{
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: rgb(123, 91, 238);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
+
+/* ultimate container */
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+/* create new task form */
+form{   
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+input{
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    color: black;
+}
+input::placeholder{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+
+#submit_task_btn{
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    transition: all 0.1s ease;
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+button:active{
+    transform: scale(1);
+}
+
+/* line dividing the section */
+#line{
+    height: 1px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+/* existing tasks section */
+#tasks{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.task{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.task_details{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    font-size: 20px;
+}
+.completed_task_detail{
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+
+.action_btns{
+    display: flex;
+    gap: 10px;
+}
+.action_btn{
+    padding: 5px;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    color: white;
+    transition: all 0.1s ease;
+}
+.action_btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.action_btn:active{
+    transform: scale(1);
+}
+.done_task_btn{
+    background-color: green;
+}
+.delete_task_btn{
+    background-color: red;
+}
+.undo_task_btn{
+    background-color: grey;
+}
